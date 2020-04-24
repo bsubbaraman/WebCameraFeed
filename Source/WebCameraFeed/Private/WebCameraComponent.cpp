@@ -30,6 +30,8 @@ void UWebCameraComponent::BeginPlay()
 	}
 
 	if (DeviceId.selectedDevice < 0) DeviceId.selectedDevice = 0;
+    
+    DeviceId.selectedDevice = 2; //in editor device seletion doesn't seem to be working - set here
 
 	currentVideoGrabber = VideoGrabberPool::GetVideoGrabber(DeviceId.selectedDevice, requestedWidth, requestedHeight, MirroredVideo);
 	
@@ -44,10 +46,12 @@ void UWebCameraComponent::EndPlay(const EEndPlayReason::Type EndPlayReason) {
 
 
 bool UWebCameraComponent::SaveAsImage(const FString& FileName) {
+
     if (currentVideoGrabber.IsValid()) {
         const FString ScreenShotPath = FPaths::GetPath(FileName);
         if ( IFileManager::Get().MakeDirectory(*ScreenShotPath, true) ){
             FString AbsoluteFilename = FPaths::ConvertRelativePathToFull(FileName);
+            GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("saveasimage!"));
             return currentVideoGrabber->saveTextureAsFile(AbsoluteFilename);
         }
     }
