@@ -13,7 +13,7 @@ void SWebCameraImage::Tick( const FGeometry& AllottedGeometry, const double InCu
 		Brush.SetResourceObject(texture);
 		Brush.ImageSize.X = videoGrabber->getWidth();
 		Brush.ImageSize.Y =  videoGrabber->getHeight();
-		Image = FInvalidatableBrushAttribute (&Brush);
+		Image = &Brush;
 		Invalidate(EInvalidateWidget::LayoutAndVolatility);
 	}
 }
