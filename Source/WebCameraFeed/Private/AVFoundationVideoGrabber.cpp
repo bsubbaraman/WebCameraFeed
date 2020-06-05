@@ -462,8 +462,18 @@ bool AVFoundationVideoGrabber::setup(int w, int h, bool mirrored) {
     {
         case AVAuthorizationStatusAuthorized:
         {
-            // The user has previously granted access to the camera.
-            return setupWithGrant(w, h, mirrored);
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                if (granted) {
+                    setupWithGrant(w, h, mirrored);
+                } else {
+                    UE_LOG(LogVideoGrabber, Error,  TEXT( "The user has denied access to the camera"));
+                }
+            }];
+            break;
+            // I switched this code to be the same as StatusNotDetermined below -- this avoids crashes in the app after granting permission -bms
+
+            // previous code:
+            //         return setupWithGrant(w, h, mirrored);
 
         }
         case AVAuthorizationStatusNotDetermined:
