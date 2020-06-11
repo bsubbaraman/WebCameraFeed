@@ -14,7 +14,7 @@ UWebCameraWidget::UWebCameraWidget(const FObjectInitializer& ObjectInitializer)
 {
 	requestedWidth = 640;
 	requestedHeight = 480;
-	DeviceId.selectedDevice = 0;
+//	DeviceId.selectedDevice = 0;
     MirroredVideo = true;
 }
 
@@ -108,7 +108,7 @@ void  UWebCameraWidget::SetDeviceId(int id) {
 		VideoGrabberPool::ReleaseVideoGrabber(currentVideoGrabber);
 	}
 	DeviceId.selectedDevice = id;
-	if (MyImage.IsValid())
+    if (MyImage.IsValid())
 	{
 		currentVideoGrabber = VideoGrabberPool::GetVideoGrabber(DeviceId.selectedDevice, requestedWidth, requestedHeight, MirroredVideo);
 		MyImage->SetVideoGrabber(currentVideoGrabber);
