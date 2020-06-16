@@ -63,7 +63,7 @@ void UWebCameraWidget::SynchronizeProperties() {
 	TAttribute<FSlateColor> ColorAndOpacityBinding = PROPERTY_BINDING(FSlateColor, ColorAndOpacity);
 	if (MyImage.IsValid())
 	{
-		currentVideoGrabber = VideoGrabberPool::GetVideoGrabber(DeviceId.selectedDevice, requestedWidth, requestedHeight, MirroredVideo);
+        currentVideoGrabber = VideoGrabberPool::GetVideoGrabber(DeviceId.selectedDevice, requestedWidth, requestedHeight, MirroredVideo);
 		MyImage->SetVideoGrabber(currentVideoGrabber);
 		MyImage->SetColorAndOpacity(ColorAndOpacityBinding);
 		//MyImage->SetOnMouseButtonDown(BIND_UOBJECT_DELEGATE(FPointerEventHandler, HandleMouseButtonDown));
@@ -110,7 +110,7 @@ void  UWebCameraWidget::SetDeviceId(int id) {
 	DeviceId.selectedDevice = id;
     if (MyImage.IsValid())
 	{
-		currentVideoGrabber = VideoGrabberPool::GetVideoGrabber(DeviceId.selectedDevice, requestedWidth, requestedHeight, MirroredVideo);
+        currentVideoGrabber = VideoGrabberPool::GetVideoGrabber(DeviceId.selectedDevice, requestedWidth, requestedHeight, MirroredVideo);
 		MyImage->SetVideoGrabber(currentVideoGrabber);
 	}
 }
