@@ -12,10 +12,10 @@
 UWebCameraWidget::UWebCameraWidget(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer), ColorAndOpacity(FLinearColor::White)
 {
-	requestedWidth = 640;
-	requestedHeight = 480;
+	requestedWidth = 1280;
+	requestedHeight = 720;
 //	DeviceId.selectedDevice = 0;
-    MirroredVideo = true;
+    MirroredVideo = false;
 }
 
 UWebCameraWidget::~UWebCameraWidget() {

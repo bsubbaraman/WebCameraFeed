@@ -12,9 +12,9 @@ UWebCameraComponent::UWebCameraComponent()
 	PrimaryComponentTick.bCanEverTick = true;
 
 	DeviceId.selectedDevice = 0;
-	requestedWidth = 640;
-	requestedHeight = 480;
-    MirroredVideo = true;
+	requestedWidth = 1280;
+	requestedHeight = 720;
+    MirroredVideo = false;
 }
 
 
